@@ -2,6 +2,7 @@ package util;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class CharIntMap {
 	private HashMap<Character, Integer> map;
@@ -14,6 +15,10 @@ public class CharIntMap {
 		}
 		map.put(' ', 0);
 		map.put('.', 0);
+	}
+
+	private CharIntMap(HashMap<Character, Integer> map) {
+		this.map = map;
 	}
 
 	public Integer get(Character character) {
@@ -33,6 +38,10 @@ public class CharIntMap {
 	}
 
 	public CharIntMap clone() {
-		return (CharIntMap) map.clone();
+		return new CharIntMap(new HashMap<>(map));
+	}
+
+	public Set<Map.Entry<Character,Integer>> entrySet() {
+		return map.entrySet();
 	}
 }

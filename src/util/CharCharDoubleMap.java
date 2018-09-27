@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class CharCharIntMap {
-	private HashMap<Character, CharIntMap> map;
+public class CharCharDoubleMap {
+	private HashMap<Character, CharDoubleMap> map;
 
-	public CharCharIntMap(CharIntMap initialisingMap) {
+	public CharCharDoubleMap(CharDoubleMap initialisingMap) {
 		map = new HashMap<>();
 		for (char c = 'a'; c <= 'z'; c++) {
 			map.put(c,  initialisingMap.clone());
@@ -16,7 +16,7 @@ public class CharCharIntMap {
 		map.put('.',  initialisingMap.clone());
 	}
 
-	public CharIntMap get(Character character) {
+	public CharDoubleMap get(Character character) {
 		if (character >= 'A' && character <= 'Z')
 			return map.get(Character.toLowerCase(character));
 		if ((character == ' ') || (character >= 'a' && character <= 'z'))
@@ -24,7 +24,7 @@ public class CharCharIntMap {
 		return map.get('.');
 	}
 
-	public Set<Map.Entry<Character, CharIntMap>> entrySet() {
+	public Set<Map.Entry<Character, CharDoubleMap>> entrySet() {
 		return map.entrySet();
 	}
 }

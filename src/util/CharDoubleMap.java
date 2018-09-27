@@ -2,6 +2,7 @@ package util;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class CharDoubleMap {
 	private HashMap<Character, Double> map;
@@ -14,6 +15,10 @@ public class CharDoubleMap {
 		}
 		map.put(' ', 0.0);
 		map.put('.', 0.0);
+	}
+
+	private CharDoubleMap(HashMap<Character, Double> map) {
+		this.map = map;
 	}
 
 	public Double get(Character character) {
@@ -33,7 +38,10 @@ public class CharDoubleMap {
 	}
 
 	public CharDoubleMap clone() {
-		CharDoubleMap clone = new CharDoubleMap();
-		return (CharDoubleMap) map.clone();
+		return new CharDoubleMap(new HashMap<>(map));
+	}
+
+	public Set<Map.Entry<Character,Double>> entrySet() {
+		return map.entrySet();
 	}
 }

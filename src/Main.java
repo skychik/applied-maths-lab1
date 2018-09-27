@@ -1,3 +1,5 @@
+import util.CharDoubleMap;
+
 import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
@@ -23,13 +25,15 @@ public class Main {
         //System.out.println("*** Text: \n" + text);
         System.out.println("*** Analysing");
         EntropyCounter ec = new EntropyCounter(text);
-        System.out.println("* Simple entropy: \n" + ec.getSimpleEntropy());
-        System.out.println("* Pair entropy: \n" + ec.getPairEntropy());
+        System.out.println("\n* Simple entropy: \n" + ec.getSimpleEntropy());
+        System.out.println("\n* Pair entropy: \n" + ec.getPairEntropy());
+        System.out.println("\n* Symbol probs and entropies:");
         Map<Character, Double> simpleEntropies = ec.getSimpleEntropies();
+        CharDoubleMap probs = ec.getCharProbs();
         for (char c = 'a'; c <= 'z'; c++) {
-            System.out.println(Character.toUpperCase(c) + ": " + simpleEntropies.get(c));
+            System.out.println(Character.toUpperCase(c) + ": " + probs.get(c) + "; " + simpleEntropies.get(c));
         }
-        System.out.println("* Spaces: " + simpleEntropies.get(' '));
-        System.out.println("* Puncts: " + simpleEntropies.get('.'));
+        System.out.println("Spaces: " + probs.get(' ') + "; " + simpleEntropies.get(' '));
+        System.out.println("Puncts: " + probs.get('.') + "; " + simpleEntropies.get('.'));
     }
 }
